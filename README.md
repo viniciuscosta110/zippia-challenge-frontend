@@ -34,8 +34,8 @@ Request payload:
 * If possible, please do SSR (Server Side Rendering) for the first screen.
 * Try to add as many comments as you could explaining your code.
 * This should take no longer than 4 hours to do
-* You have 48 hours (not include the weekends) to return your code to this email, doing as much as you can.
-* Please deploy your code to https://vercel.com/, and then send the page URL to us.
+* You have 48 hours (not include the weekends) to return your code to this email, doing as much as you can. 
+* Please deploy your code to https://vercel.com/, and then send the page URL to us. ✅
 * If you are busy and don't have enough time please contact me and we can postpone the test to another moment.
 * If you have any questions feel free to ask.
 * You can take as design reference: https://www.zippia.com/developer-jobs/jobs/
