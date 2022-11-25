@@ -1,4 +1,6 @@
-import { Typography, Card, CardContent } from '@mui/material';
+import { Typography, Card, CardContent, Collapse, IconButton, Button } from '@mui/material';
+import { ExpandMore } from '@mui/icons-material';
+import { useState } from 'react';
 import { cardStyle, descriptionStyle, showMoreStyle } from './styles';
 
 interface CardProps {
@@ -9,26 +11,31 @@ interface CardProps {
 }
 
 export function JobCard({ companyName, jobTitle, description, index }: CardProps) {
-  const itemDescription = document.getElementById(`item-description-${index}`)
+  const [open, setOpen] = useState(false);
   
   return (
-    <Card sx={ cardStyle }>
-      <CardContent sx={{ overflow: 'hidden' }}>
+    <Card sx={[ cardStyle, { height: !open ? '380px' : '100%' }]}>
+      <CardContent>
         <Typography variant='h1' sx={{ fontSize: '24px' }}>
           {companyName} 
         </Typography >
+        
         <Typography variant='h2' sx={{ fontSize: '16px', color: '#777' }}>
           {jobTitle} 
         </Typography>
+        
         <Typography 
           variant='body1' 
-          sx={ descriptionStyle } 
+          sx={[descriptionStyle, { height: !open ? '200px' : '95%' }]}
           id={`item-description-${index}`}
           dangerouslySetInnerHTML={{__html: description}}
         ></Typography>
-        <Typography variant='body1' sx={ showMoreStyle }>
-          Show more...
-        </Typography>
+
+        <Button onClick={() => setOpen(!open)}>
+          Show more
+          <ExpandMore sx={{ transform: !open ? 'rotate(0deg)' : 'rotate(180deg)', transition: '0.3s ease-in' }} fontSize='medium' />
+          
+        </Button>
       </CardContent>
     </Card>
   )
