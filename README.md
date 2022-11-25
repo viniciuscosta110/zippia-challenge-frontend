@@ -32,7 +32,7 @@ Request payload:
 * Try to add some styles to the elements of the jobs. ✅
 * Try to make it responsive (supports desktops, mobile phones and tablets). ✅
 * If possible, please do SSR (Server Side Rendering) for the first screen.
-* Try to add as many comments as you could explaining your code.
+* Try to add as many comments as you could explaining your code. ✅
 * This should take no longer than 4 hours to do
 * You have 48 hours (not include the weekends) to return your code to this email, doing as much as you can. 
 * Please deploy your code to https://vercel.com/, and then send the page URL to us. ✅

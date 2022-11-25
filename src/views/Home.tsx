@@ -8,10 +8,19 @@ import { LocalFireDepartment } from '@mui/icons-material'
 import { Loader } from '../components/Loader'
 
 export function Home() {
+  // I this data const can be deleted, but I left it for the future if I need to use it
   const { jobs, data, loading } = useFetch({ url: 'https://www.zippia.com/api/jobs/' })
   const [search, setSearch] = useState('')
   const [filteredJobs, setFilteredJobs] = useState<IPost[]>(jobs)
 
+  // Filter jobs posted in the last 7 days
+  const last7DaysFilter = () => {
+    setFilteredJobs(jobs.filter((job) => {
+      return job.daysAgo <= 7
+    }))
+  }
+
+  // Filter jobs by Company Name
   useEffect(() => {
     const newFilteredJobs = jobs.filter((job) => job.companyName.toLowerCase().includes(search.toLowerCase()))
     setFilteredJobs(newFilteredJobs)
@@ -34,11 +43,7 @@ export function Home() {
         <Button
           variant="contained"
           sx={{ ml: '8px' }}
-          onClick={() => {
-            setFilteredJobs(jobs.filter((job) => {
-              return job.daysAgo <= 7
-            }))
-          }}
+          onClick={last7DaysFilter}
         >Last 7 days</Button>
       </Box>
       

@@ -1,9 +1,8 @@
 import Markdown from 'markdown-to-jsx'
-import { Typography, Card, CardContent, Collapse, IconButton, Button, Box } from '@mui/material';
+import { Typography, Card, CardContent, Button } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 import { useState } from 'react';
-import { cardStyle, showMoreStyle } from './styles';
-import styled from '@emotion/styled';
+import { cardStyle } from './styles';
 
 interface CardProps {
   companyName: string;
@@ -12,6 +11,7 @@ interface CardProps {
   index: number;
 }
 
+// I did this because I was having trouble with the styling of the <MarkDown> component
 const StyledMarkdown = (props: any) => {
   return <Markdown options={{ overrides: { p: { component: Typography, props: { paragraph: true } } } }} {...props} />;
 }

@@ -1,5 +1,6 @@
 
 export const cardStyle = {
+  /* Some responsiviness for the card */
   width: {
     lg: '50%',
     xs: '100%',

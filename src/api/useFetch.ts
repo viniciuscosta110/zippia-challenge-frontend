@@ -14,14 +14,15 @@ export type IPost = {
   daysAgo: number
 }
 
-export function useFetch({ url, jobTitle, location }: useFetchProps) {
+/* I'm using this custom hook to fetch the data from the API,
+since It was a bit messy to do it in the main component */
 
+export function useFetch({ url, jobTitle, location }: useFetchProps) {
   const [data, setData] = useState([]);
   const [jobs, setJobs] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   //Remove all non-numeric characters
-
   const dateStringToNumber = (date: string) => {
     const dateNumber = date.replace(/\D/g, "");
     return parseInt(dateNumber);
@@ -37,6 +38,7 @@ export function useFetch({ url, jobTitle, location }: useFetchProps) {
       numJobs: 20,
       previousListingHashes: []
     }).then((response) => {
+      // Get just the data that I need
       const cleanJobs = response.data.jobs.map((item: any) => {
         const daysAgo = dateStringToNumber(item.postedDate)
         return {
