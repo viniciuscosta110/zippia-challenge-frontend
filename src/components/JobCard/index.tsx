@@ -1,3 +1,4 @@
+import Markdown from 'markdown-to-jsx'
 import { Typography, Card, CardContent, Collapse, IconButton, Button } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 import { useState } from 'react';
@@ -29,7 +30,7 @@ export function JobCard({ companyName, jobTitle, description, index }: CardProps
           sx={[descriptionStyle, { height: !open ? '200px' : '95%' }]}
           id={`item-description-${index}`}
           /* dangerouslySetInnerHTML is a property we can use to set an html element to an element directly */
-          dangerouslySetInnerHTML={{__html: description}}
+          dangerouslySetInnerHTML={{__html: '<Markdown>' + description + '</Markdown>'}}
         ></Typography>
 
         <Button onClick={() => setOpen(!open)}>
