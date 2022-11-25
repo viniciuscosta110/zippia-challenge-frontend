@@ -21,8 +21,8 @@ export function JobCard({ companyName, jobTitle, description, index }: CardProps
   
   return (
     <Card sx={ cardStyle }>
-      <CardContent sx={{ heigth: '100%', display: 'flex', flexDirection: 'column' }}>
-        <Typography variant='h1' sx={{ fontSize: '24px' }}>
+      <CardContent sx={{ heigth: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <Typography variant='h1' sx={{ fontSize: '24px', textOverflow: 'ellipsis' }}>
           {jobTitle} 
         </Typography >
         
