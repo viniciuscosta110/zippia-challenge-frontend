@@ -34,7 +34,6 @@ export function Home() {
           sx={{ ml: '8px' }}
           onClick={() => {
             setFilteredJobs(jobs.filter((job) => {
-              console.log(job)
               return job.daysAgo <= 7
             }))
           }}
