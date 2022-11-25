@@ -1,8 +1,9 @@
 import Markdown from 'markdown-to-jsx'
-import { Typography, Card, CardContent, Collapse, IconButton, Button } from '@mui/material';
+import { Typography, Card, CardContent, Collapse, IconButton, Button, Box } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 import { useState } from 'react';
-import { cardStyle, descriptionStyle, showMoreStyle } from './styles';
+import { cardStyle, showMoreStyle } from './styles';
+import styled from '@emotion/styled';
 
 interface CardProps {
   companyName: string;
@@ -11,12 +12,16 @@ interface CardProps {
   index: number;
 }
 
+const StyledMarkdown = (props: any) => {
+  return <Markdown options={{ overrides: { p: { component: Typography, props: { paragraph: true } } } }} {...props} />;
+}
+
 export function JobCard({ companyName, jobTitle, description, index }: CardProps) {
   const [open, setOpen] = useState(false);
   
   return (
-    <Card sx={[ cardStyle, { height: !open ? '380px' : '100%' }]}>
-      <CardContent>
+    <Card sx={ cardStyle }>
+      <CardContent sx={{ heigth: '100%', display: 'flex', flexDirection: 'column' }}>
         <Typography variant='h1' sx={{ fontSize: '24px' }}>
           {companyName} 
         </Typography >
@@ -24,17 +29,11 @@ export function JobCard({ companyName, jobTitle, description, index }: CardProps
         <Typography variant='h2' sx={{ fontSize: '16px', color: '#777' }}>
           {jobTitle} 
         </Typography>
-        
-        <Typography 
-          variant='body1' 
-          sx={[descriptionStyle, { height: !open ? '200px' : '95%' }]}
-          id={`item-description-${index}`}
-          /* dangerouslySetInnerHTML is a property we can use to set an html element to an element directly */
-          dangerouslySetInnerHTML={{__html: '<Markdown>' + description + '</Markdown>'}}
-        ></Typography>
+
+        <StyledMarkdown style={{ whiteSpace: 'pre-wrap', overflow: 'hidden', fontSize: '16px',  marginTop: '24px', fontFamily: ' "Roboto","Helvetica","Arial",sans-serif ', height: !open ? '200px' : '100%', transition: 'height 1s ease' }}>{ description }</StyledMarkdown>
 
         <Button onClick={() => setOpen(!open)}>
-          Show more
+          {!open ? "Show more" : "Show less"}
           <ExpandMore sx={{ transform: !open ? 'rotate(0deg)' : 'rotate(180deg)', transition: '0.3s ease-in' }} fontSize='medium' />
         </Button>
       </CardContent>
