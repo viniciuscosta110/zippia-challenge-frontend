@@ -7,7 +7,7 @@ interface useFetchProps {
   location?: string;
 }
 
-type IPost = {
+export type IPost = {
   jobTitle: string
   companyName: string
   jobdesc: string
@@ -20,8 +20,9 @@ export function useFetch({ url, jobTitle, location }: useFetchProps) {
   const [jobs, setJobs] = useState<IPost[]>([]);
   const [loading, setLoading] = useState(true);
 
+  //Remove all non-numeric characters
+
   const dateStringToNumber = (date: string) => {
-    //Remove all non-numeric characters
     const dateNumber = date.replace(/\D/g, "");
     return parseInt(dateNumber);
   }

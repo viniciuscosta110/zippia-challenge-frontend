@@ -1,5 +1,5 @@
 import { Typography, Card, CardContent } from '@mui/material';
-import { cardStyle, descriptionStyle } from './styles';
+import { cardStyle, descriptionStyle, showMoreStyle } from './styles';
 
 interface CardProps {
   companyName: string;
@@ -17,7 +17,7 @@ export function JobCard({ companyName, jobTitle, description, index }: CardProps
         <Typography variant='h1' sx={{ fontSize: '24px' }}>
           {companyName} 
         </Typography >
-        <Typography variant='h2' sx={{fontSize: '16px', color: '#777'}}>
+        <Typography variant='h2' sx={{ fontSize: '16px', color: '#777' }}>
           {jobTitle} 
         </Typography>
         <Typography 
@@ -26,6 +26,9 @@ export function JobCard({ companyName, jobTitle, description, index }: CardProps
           id={`item-description-${index}`}
           dangerouslySetInnerHTML={{__html: description}}
         ></Typography>
+        <Typography variant='body1' sx={ showMoreStyle }>
+          Show more...
+        </Typography>
       </CardContent>
     </Card>
   )
