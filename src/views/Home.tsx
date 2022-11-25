@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { JobCard } from '../components/JobCard'
 import { IPost, useFetch } from '../api/useFetch'
+import { LocalFireDepartment } from '@mui/icons-material'
+import { Loader } from '../components/Loader'
 
 export function Home() {
   const { jobs, data, loading } = useFetch({ url: 'https://www.zippia.com/api/jobs/' })
@@ -39,7 +41,9 @@ export function Home() {
           }}
         >Last 7 days</Button>
       </Box>
-
+      
+      { loading ? <Loader /> : null }
+      
       <List>
         {filteredJobs.map((item, index) => {
           return index < 10 ? (
