@@ -28,13 +28,13 @@ export function JobCard({ companyName, jobTitle, description, index }: CardProps
           variant='body1' 
           sx={[descriptionStyle, { height: !open ? '200px' : '95%' }]}
           id={`item-description-${index}`}
+          /* dangerouslySetInnerHTML is a property we can use to set an html element to an element directly */
           dangerouslySetInnerHTML={{__html: description}}
         ></Typography>
 
         <Button onClick={() => setOpen(!open)}>
           Show more
           <ExpandMore sx={{ transform: !open ? 'rotate(0deg)' : 'rotate(180deg)', transition: '0.3s ease-in' }} fontSize='medium' />
-          
         </Button>
       </CardContent>
     </Card>

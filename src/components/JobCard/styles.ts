@@ -9,8 +9,6 @@ export const cardStyle = {
 }
 
 export const descriptionStyle = {
-  textOverflow: 'clip', 
-  whiteSpace: 'pre-line',
   overflow: 'hidden',
   fontSize: '14px', 
   marginTop: '24px',
