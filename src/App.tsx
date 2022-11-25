@@ -1,9 +1,9 @@
-import { Home } from './views/Home'
+import MainRoutes from './routes'
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <MainRoutes />
     </div>
   )
 }
