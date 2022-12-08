@@ -4,7 +4,7 @@ import { ExpandMore } from '@mui/icons-material';
 import { useState } from 'react';
 import { cardStyle } from './styles';
 
-interface CardProps {
+export interface JobCardProps {
   companyName: string;
   jobTitle: string;
   description: string;
@@ -16,7 +16,7 @@ const StyledMarkdown = (props: any) => {
   return <Markdown options={{ overrides: { p: { component: Typography, props: { paragraph: true } } } }} {...props} />;
 }
 
-export function JobCard({ companyName, jobTitle, description, index }: CardProps) {
+export function JobCard({ companyName, jobTitle, description, index }: JobCardProps) {
   const [open, setOpen] = useState(false);
   
   return (
